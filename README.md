@@ -1,18 +1,20 @@
 # QMK Layouts
 
-Collection of my qmk layouts.
+Automating the installation and setup of QMK on **Debian**-based systems, and flashing firmware with my own **custom keymap** layouts.
 
 ## Install QMK
 
-Install qmk firmware on Debian based systems, then run `qmk setup` to install the necessary dependencies.
+Install QMK firmware, then run `qmk setup` to install the necessary dependencies.
 
 ```bash
 make install
 ```
 
-## Q8 ISO Encoder
+## Keychron Q8-F1 (ISO Encoder)
 
-Create a new layout called `hrvthzslt` for the `keychron/q8/iso_encoder` keyboard in qmk by symlinking the layout file to the qmk directory.
+![Keyhcron Q8-F1](assets/q8-f1.png)
+
+Create a new layout called `hrvthzslt` for the `keychron/q8/iso_encoder` keyboard in QMK by symlinking the layout file to the QMK directory.
 
 ```bash
 make q8-setup
@@ -24,7 +26,7 @@ Compile the keyboard firmware with the new layout.
 make q8-compile
 ```
 
-Flash the firmware to the keyboard. [Factory reset guide.](https://keychron.com.au/blogs/archived/how-to-factory-reset-or-flash-firmware-for-your-keychron-q8-keyboard)
+Flash the firmware to the keyboard. [Factory reset guide](https://keychron.com.au/blogs/archived/how-to-factory-reset-or-flash-firmware-for-your-keychron-q8-keyboard).
 
 ```bash
 make q8-flash
