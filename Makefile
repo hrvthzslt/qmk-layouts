@@ -21,3 +21,16 @@ q8-compile: # Compile custom keychron q8 iso encoder layout
 .PHONY: q8-flash
 q8-flash: # Flash custom keychron q8 iso encoder layout
 	qmk flash -kb keychron/q8/iso_encoder -km hrvthzslt
+
+.PHONY: q11-setup
+q11-setup: # Symlink custom keychron q11 iso encoder layout
+	rm -rf ${HOME}/qmk_firmware/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt
+	ln -s ${PWD}/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt ${HOME}/qmk_firmware/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt
+
+.PHONY: q11-compile
+q11-compile: # Compile custom keychron q11 iso encoder layout
+	qmk compile -kb keychron/q11/iso_encoder -km hrvthzslt
+
+.PHONY: q11-flash
+q11-flash: # Flash custom keychron q11 iso encoder layout
+	qmk flash -kb keychron/q11/iso_encoder -km hrvthzslt
