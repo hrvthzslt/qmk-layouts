@@ -31,3 +31,25 @@ Flash the firmware to the keyboard. [Factory reset guide](https://keychron.com.a
 ```bash
 make q8-flash
 ```
+
+## Keychron Q11-M3 (ISO Encoder)
+
+![Keyhcron Q11-M3](assets/q11-m3.png)
+
+Create a new layout called `hrvthzslt` for the `keychron/q11/iso_encoder` keyboard in QMK by symlinking the layout file to the QMK directory.
+
+```bash
+make q11-setup
+```
+
+Compile the keyboard firmware with the new layout.
+
+```bash
+make q11-compile
+```
+
+Flash the firmware to the keyboard. [Factory reset guide](https://keychron.ca/pages/how-to-factory-reset-or-flash-firmware-for-your-keychron-q11-keyboard).
+
+```bash
+make q11-flash
+```
