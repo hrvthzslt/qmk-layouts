@@ -1,0 +1,6 @@
+#pragma once
+
+#define LT_TNAV LT(_NAV,KC_TAB)
+#define MT_CTES MT(MOD_LCTL,KC_ESC)
+#define MT_ALBS MT(MOD_LALT,KC_BSPC)
+#define MT_ALEN MT(MOD_LALT|MOD_RALT,KC_ENT)
