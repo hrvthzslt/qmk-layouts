@@ -20,6 +20,10 @@
 
 #include "macros.c"
 
+// additional key definitions
+
+#include "keys.h"
+
 // clang-format off
 
 enum layers {
@@ -32,11 +36,6 @@ enum layers {
 
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
-
-#define LT_TNAV LT(_NAV,KC_TAB)
-#define MT_CTES MT(MOD_LCTL,KC_ESC)
-#define MT_ALBS MT(MOD_LALT,KC_BSPC)
-#define MT_ALEN MT(MOD_LALT|MOD_RALT,KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD_BASE] = LAYOUT_iso_70(
