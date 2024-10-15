@@ -16,10 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-// macros
-
-#include "macros.c"
-
 // additional key definitions
 
 #include "keys.h"
@@ -36,6 +32,17 @@ enum layers {
 
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
+
+// macros
+
+#include "macros.c"
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    process_super(keycode, record);
+    return true;
+}
+
+// keymaps
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD_BASE] = LAYOUT_iso_70(

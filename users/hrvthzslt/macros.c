@@ -16,7 +16,7 @@ bool press_super(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+void process_super(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MA_SUP1:
             press_super(KC_1, record);
@@ -31,5 +31,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             press_super(KC_4, record);
             break;
     }
-    return true;
 }
