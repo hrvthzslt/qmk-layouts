@@ -26,7 +26,8 @@ bool press_reset(keyrecord_t *record) {
         ma_res_timer = timer_read();
     } else {
         if (timer_elapsed(ma_res_timer) >= 4000) {
-            rgblight_toggle();
+            eeconfig_init();
+            soft_reset_keyboard();
         }
     }
     return true;
