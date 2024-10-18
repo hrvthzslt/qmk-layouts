@@ -9,7 +9,13 @@ main() {
   # Source: https://github.com/qmk/qmk_fpm
 
   # Add the QMK source to your apt repositories list:
-  echo "deb https://linux.qmk.fm/ $(lsb_release --codename --short) main" | sudo tee /etc/apt/sources.list.d/qmk.list
+  CODENAME=$(lsb_release --codename --short)
+
+  if [ "$CODENAME" = "trixie" ]; then
+    CODENAME="bookworm"
+  fi
+
+  echo "deb https://linux.qmk.fm/ $CODENAME main" | sudo tee /etc/apt/sources.list.d/qmk.list
 
   # Add the QMK GPG Key:
   wget -qO - https://linux.qmk.fm/gpg_pubkey.txt | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/qmk-gpg-pubkey.gpg >/dev/null
