@@ -3,7 +3,12 @@ enum custom_keycodes {
     MA_SUP2,
     MA_SUP3,
     MA_SUP4,
+    MA_RES,
 };
+
+#include "timer.h"
+
+static uint16_t ma_res_timer;
 
 bool press_super(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
@@ -16,7 +21,18 @@ bool press_super(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void process_super(uint16_t keycode, keyrecord_t *record) {
+bool press_reset(keyrecord_t *record) {
+    if (record->event.pressed) {
+        ma_res_timer = timer_read();
+    } else {
+        if (timer_elapsed(ma_res_timer) >= 4000) {
+            rgblight_toggle();
+        }
+    }
+    return true;
+}
+
+void process_macros(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MA_SUP1:
             press_super(KC_1, record);
@@ -29,6 +45,9 @@ void process_super(uint16_t keycode, keyrecord_t *record) {
             break;
         case MA_SUP4:
             press_super(KC_4, record);
+            break;
+        case MA_RES:
+            press_reset(record);
             break;
     }
 }
