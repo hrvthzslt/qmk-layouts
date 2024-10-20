@@ -6,6 +6,9 @@ main() {
     exit 1
   fi
 
+  # Download the udev rules for QMK:
+  sudo wget -O /etc/udev/rules.d/50-qmk.rules https://raw.githubusercontent.com/qmk/qmk_firmware/refs/heads/master/util/udev/50-qmk.rules
+
   # Source: https://github.com/qmk/qmk_fpm
 
   # Add the QMK source to your apt repositories list:
@@ -26,7 +29,7 @@ main() {
   # Install QMK:
   sudo apt install qmk
 
-  # Setuo QMK:
+  # Setup QMK:
   qmk setup
 
   exit 0

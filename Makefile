@@ -9,6 +9,9 @@ install: # Install and setup qmk firmware
 	@echo "Installing qmk firmware"
 	./scripts/qmk_install
 
+.PHONY: setup
+setup: userspace-setup q8-setup q11-setup # Setup qmk firmware
+
 .PHONY: userspace-setup
 userspace-setup: # Symlink userspace files
 	@echo "Symlinking userspace files"
@@ -16,7 +19,7 @@ userspace-setup: # Symlink userspace files
 	ln -s ${PWD}/users ${HOME}/qmk_firmware/users
 
 .PHONY: q8-setup
-q8-setup: userspace-setup # Symlink custom keychron q8 iso encoder layout
+q8-setup: # Symlink custom keychron q8 iso encoder layout
 	rm -rf ${HOME}/qmk_firmware/keyboards/keychron/q8/iso_encoder/keymaps/hrvthzslt
 	ln -s ${PWD}/keyboards/keychron/q8/iso_encoder/keymaps/hrvthzslt ${HOME}/qmk_firmware/keyboards/keychron/q8/iso_encoder/keymaps/hrvthzslt
 
@@ -29,7 +32,7 @@ q8-flash: # Flash custom keychron q8 iso encoder layout
 	qmk flash -kb keychron/q8/iso_encoder -km hrvthzslt
 
 .PHONY: q11-setup
-q11-setup: userspace-setup # Symlink custom keychron q11 iso encoder layout
+q11-setup: # Symlink custom keychron q11 iso encoder layout
 	rm -rf ${HOME}/qmk_firmware/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt
 	ln -s ${PWD}/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt ${HOME}/qmk_firmware/keyboards/keychron/q11/iso_encoder/keymaps/hrvthzslt
 
