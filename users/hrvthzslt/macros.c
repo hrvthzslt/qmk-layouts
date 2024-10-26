@@ -4,6 +4,8 @@ enum custom_keycodes {
     MA_SUP3,
     MA_SUP4,
     MA_RES,
+    C_LEFT,
+    C_RIGHT,
 };
 
 #include "timer.h"
@@ -33,6 +35,17 @@ bool press_reset(keyrecord_t *record) {
     return true;
 }
 
+bool press_ctrl_button(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        register_code(KC_LCTL);
+        register_code(keycode);
+    } else {
+        unregister_code(keycode);
+        unregister_code(KC_LCTL);
+    }
+    return true;
+}
+
 void process_macros(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MA_SUP1:
@@ -49,6 +62,12 @@ void process_macros(uint16_t keycode, keyrecord_t *record) {
             break;
         case MA_RES:
             press_reset(record);
+            break;
+        case C_LEFT:
+            press_ctrl_button(KC_LEFT, record);
+            break;
+        case C_RIGHT:
+            press_ctrl_button(KC_RGHT, record);
             break;
     }
 }
