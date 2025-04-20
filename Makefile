@@ -10,7 +10,13 @@ install: # Install and setup qmk firmware
 	@echo "Installing qmk firmware"
 	./scripts/qmk_install
 
-setup: # Symlink userspace files
+keychron-install: # Install and setup keychron qmk repo
+	git clone -b wireless_playground https://github.com/Keychron/qmk_firmware.git $(keychron_path)
+	qmk config user.qmk_home=$(keychron_path)
+	qmk setup
+	qmk config user.qmk_home=$(qmk_path)
+
+setup: # Setup home and userspace
 	qmk config user.qmk_home=$(qmk_path)
 	qmk config user.overlay_dir=$(pwd)
 	qmk userspace-add -kb keychron/q8/iso_encoder -km hrvthzslt
@@ -27,3 +33,8 @@ q11-compile: setup # Compile custom keychron q11 iso encoder layout
 
 q11-flash: setup # Flash custom keychron q11 iso encoder layout
 	qmk flash -kb keychron/q11/iso_encoder -km hrvthzslt
+
+k11-compile: # Compile custom keychron k11 max ansi encoder rgb layout
+	qmk config user.qmk_home=$(keychron_path)
+	qmk compile -kb keychron/k11_max/ansi_encoder/rgb -km default
+	qmk config user.qmk_home=$(qmk_path)
