@@ -32,6 +32,8 @@ main() {
   # Setup QMK:
   qmk setup
 
+  cd ~/qmk_firmware && git checkout 0.29.12
+
   exit 0
 }
 
