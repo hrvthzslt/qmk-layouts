@@ -71,3 +71,14 @@ void process_macros(uint16_t keycode, keyrecord_t *record) {
             break;
     }
 }
+
+bool other_key_press_exceptions(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT_ALSP:
+            // Do not select the hold action when another key is pressed.
+            return false;
+        default:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+    }
+}
