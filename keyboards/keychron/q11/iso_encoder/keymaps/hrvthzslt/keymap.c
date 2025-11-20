@@ -31,11 +31,15 @@ enum layers{
 
 // macros
 
-#include "macros.c"
+#include "common.c"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_macros(keycode, record);
     return true;
+}
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    return other_key_press_exceptions(keycode, record);
 }
 
 // keymaps
@@ -47,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  LT_TNAV,  KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
         _______,  MT_CTES,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_PSCR,
         _______,  KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-        _______,  KC_LCTL,  MO(_FUN), KC_LGUI,  MT_ALBS,          KC_SPC,                       MT_ALEN,              KC_LGUI,  MO(_FUN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        _______,  KC_LCTL,  KC_LALT,  MO(_FUN), MT_GUBS,          MT_ALSP,                       MT_ALEN,              KC_LGUI,  MO(_FUN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [_NAV] = LAYOUT_92_iso(
         _______,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   _______,  _______,  RM_TOGG,
@@ -63,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,    KC_RBRC,                      KC_PGDN,
         _______,  KC_LCTL,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,      KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,    KC_NUHS,  KC_ENT,             KC_PSCR,
         _______,  KC_LSFT,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,  KC_UP,
-        _______,  KC_LCTL,  MO(_FUN), KC_LGUI,  MT_ALBS,          KC_SPC,                       MT_ALEN,              KC_LGUI,  MO(_FUN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        _______,  KC_LCTL,  KC_LALT,  MO(_FUN), KC_LGUI,          KC_SPC,                       MT_ALEN,               KC_LGUI,  MO(_FUN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [_FUN] = LAYOUT_92_iso(
         _______,  _______,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RM_VALD,   RM_VALU,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,  _______,  RM_TOGG,
