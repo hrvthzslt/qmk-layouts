@@ -25,7 +25,8 @@
 enum layers {
     MAC_B,
     PC_B,
-    _NAV,
+    PC_N,
+    MAC_N,
     _FUN
 };
 
@@ -62,7 +63,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_NUBS,  KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,     MO(_FUN), KC_N,    KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT, KC_UP,
         KC_LCTL, KC_LALT,  MT_GUBS,           MT_ALSP,          LT_DFUN,  MO(_FUN),          MT_ALEN,           KC_LGUI,            KC_LEFT, KC_DOWN, KC_RGHT),
 
-    [_NAV] = LAYOUT_iso_70(
+    [PC_N] = LAYOUT_iso_70(
+        KC_GRV,  KC_BRID,  KC_BRIU,  KC_TASK, KC_FLXP, RM_VALD, RM_VALU,  KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,          RM_TOGG,
+        _______, _______,  _______,  _______, _______, _______, MA_SUP4,  MA_SUP1,  MA_SUP2, MA_SUP3, KC_PGUP,  _______,  _______,                    _______,
+        _______, _______,  _______,  _______, _______, _______, KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT, _______,  _______,  _______,  _______,          _______,
+        _______, _______,  _______,  _______, _______, _______, _______,  _______,  KC_PGDN, KC_HOME, C_LEFT,   C_RIGHT,  KC_END,   _______, _______,
+        _______, _______,  _______,           _______,          KC_DEL,   _______,           _______,           _______,            _______, _______, _______),
+
+    [MAC_N] = LAYOUT_iso_70(
         KC_GRV,  KC_BRID,  KC_BRIU,  KC_TASK, KC_FLXP, RM_VALD, RM_VALU,  KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,          RM_TOGG,
         _______, _______,  _______,  _______, _______, _______, MA_SUP4,  MA_SUP1,  MA_SUP2, MA_SUP3, KC_PGUP,  _______,  _______,                    _______,
         _______, _______,  _______,  _______, _______, _______, KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT, _______,  _______,  _______,  _______,          _______,
@@ -81,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [MAC_B] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [PC_B] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [_NAV]   = {ENCODER_CCW_CW(RM_VALD, RM_VALU)},
+    [PC_N]   = {ENCODER_CCW_CW(RM_VALD, RM_VALU)},
     [_FUN]   = {ENCODER_CCW_CW(RM_VALD, RM_VALU)}
 };
 #endif // ENCODER_MAP_ENABLE
