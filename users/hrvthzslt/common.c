@@ -3,6 +3,10 @@ enum custom_keycodes {
     MA_SUP2,
     MA_SUP3,
     MA_SUP4,
+    MA_ALT1,
+    MA_ALT2,
+    MA_ALT3,
+    MA_ALT4,
     MA_RES,
     C_LEFT,
     C_RIGHT,
@@ -12,15 +16,23 @@ enum custom_keycodes {
 
 static uint16_t ma_res_timer;
 
-bool press_super(uint16_t keycode, keyrecord_t *record) {
+bool press_modifier(uint16_t modifier, uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-        register_code(KC_LGUI);
+        register_code(modifier);
         register_code(keycode);
     } else {
         unregister_code(keycode);
-        unregister_code(KC_LGUI);
+        unregister_code(modifier);
     }
     return true;
+}
+
+bool press_super(uint16_t keycode, keyrecord_t *record) {
+    return press_modifier(KC_LGUI, keycode, record);
+}
+
+bool press_alt(uint16_t keycode, keyrecord_t *record) {
+    return press_modifier(KC_LALT, keycode, record);
 }
 
 bool press_reset(keyrecord_t *record) {
@@ -59,6 +71,18 @@ void process_macros(uint16_t keycode, keyrecord_t *record) {
             break;
         case MA_SUP4:
             press_super(KC_4, record);
+            break;
+        case MA_ALT1:
+            press_alt(KC_1, record);
+            break;
+        case MA_ALT2:
+            press_alt(KC_2, record);
+            break;
+        case MA_ALT3:
+            press_alt(KC_3, record);
+            break;
+        case MA_ALT4:
+            press_alt(KC_4, record);
             break;
         case MA_RES:
             press_reset(record);

@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MAC_N] = LAYOUT_iso_70(
         KC_GRV,  KC_BRID,  KC_BRIU,  KC_TASK, KC_FLXP, RM_VALD, RM_VALU,  KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,          RM_TOGG,
-        _______, _______,  _______,  _______, _______, _______, MA_SUP4,  MA_SUP1,  MA_SUP2, MA_SUP3, KC_PGUP,  _______,  _______,                    _______,
+        _______, _______,  _______,  _______, _______, _______, MA_ALT4,  MA_ALT1,  MA_ALT2, MA_ALT3, KC_PGUP,  _______,  _______,                    _______,
         _______, _______,  _______,  _______, _______, _______, KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT, _______,  _______,  _______,  _______,          _______,
         _______, _______,  _______,  _______, _______, _______, _______,  _______,  KC_PGDN, KC_HOME, C_LEFT,   C_RIGHT,  KC_END,   _______, _______,
         _______, _______,  _______,           _______,          KC_DEL,   _______,           _______,           _______,            _______, _______, _______),
