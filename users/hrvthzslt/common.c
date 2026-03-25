@@ -47,9 +47,9 @@ bool press_scrlk(keyrecord_t *record) {
         register_code(KC_LSFT);
         register_code(KC_S);
     } else {
-        unregister_code(KC_LGUI);
-        unregister_code(KC_LSFT);
         unregister_code(KC_S);
+        unregister_code(KC_LSFT);
+        unregister_code(KC_LGUI);
     }
     return true;
 }
