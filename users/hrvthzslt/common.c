@@ -66,23 +66,12 @@ bool press_reset(keyrecord_t *record) {
     return true;
 }
 
-bool press_mod_button(uint16_t modifier, uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        register_code(modifier);
-        register_code(keycode);
-    } else {
-        unregister_code(keycode);
-        unregister_code(modifier);
-    }
-    return true;
-}
-
 bool press_ctrl_button(uint16_t keycode, keyrecord_t *record) {
-    return press_mod_button(KC_LCTL, keycode, record);
+    return press_modifier(KC_LCTL, keycode, record);
 }
 
 bool press_alt_button(uint16_t keycode, keyrecord_t *record) {
-    return press_mod_button(KC_LALT, keycode, record);
+    return press_modifier(KC_LALT, keycode, record);
 }
 
 bool press_mac_print_screen(keyrecord_t *record) {
