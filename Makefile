@@ -8,7 +8,7 @@ help:
 	@grep -h -E '^[a-zA-Z0-9_-]+:.*?# .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?# "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 setup-venv: # Setup Python virtual environment for QMK
-	/usr/bin/python3 -m venv $(venv_path)
+	python3 -m venv $(venv_path)
 	$(venv_activate) && pip install -r $(qmk_path)/requirements.txt
 
 install: # Install and setup qmk firmware
