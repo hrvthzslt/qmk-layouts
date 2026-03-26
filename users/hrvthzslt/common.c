@@ -70,10 +70,6 @@ bool press_ctrl_button(uint16_t keycode, keyrecord_t *record) {
     return press_modifier(KC_LCTL, keycode, record);
 }
 
-bool press_alt_button(uint16_t keycode, keyrecord_t *record) {
-    return press_modifier(KC_LALT, keycode, record);
-}
-
 bool press_mac_print_screen(keyrecord_t *record) {
     if (record->event.pressed) {
         register_code(KC_LSFT);
@@ -152,10 +148,10 @@ void process_macros(uint16_t keycode, keyrecord_t *record) {
             press_ctrl_button(KC_RGHT, record);
             break;
         case A_LEFT:
-            press_alt_button(KC_LEFT, record);
+            press_alt(KC_LEFT, record);
             break;
         case A_RIGHT:
-            press_alt_button(KC_RGHT, record);
+            press_alt(KC_RGHT, record);
             break;
         case M_PRINT:
             press_mac_print_screen(record);
