@@ -21,9 +21,9 @@
 
 enum layers{
     MAC_B,
-    PC_N,
-    PC_B,
     MAC_N,
+    PC_B,
+    PC_N,
     _FUN,
 };
 
