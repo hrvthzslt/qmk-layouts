@@ -7,12 +7,15 @@ venv_activate := . $(venv_path)/bin/activate
 help:
 	@grep -h -E '^[a-zA-Z0-9_-]+:.*?# .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?# "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+setup-venv: # Setup Python virtual environment for QMK
+	python3 -m venv $(venv_path)
+	$(venv_activate) && pip install -r $(qmk_path)/requirements.txt
+
 install: # Install and setup qmk firmware
 	@echo "Installing qmk firmware"
 	./scripts/qmk_install
 	-cd $(qmk_path)
-	/usr/bin/python3 -m venv $(venv_path)
-	$(venv_activate) && pip install -r $(qmk_path)/requirements.txt
+	@$(MAKE) setup-venv
 
 setup: # Symlink userspace files
 	$(venv_activate) && qmk config user.qmk_home=$(qmk_path)
