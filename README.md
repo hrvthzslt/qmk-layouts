@@ -1,6 +1,6 @@
 # QMK Layouts
 
-Automating the installation and setup of QMK on **Debian**-based systems, and flashing firmware with my own **custom keymap** layouts.
+Automating the installation and setup of QMK on **Debian**-based systems and **Fedora**, and flashing firmware with my own **custom keymap** layouts.
 
 ## Install QMK
 
